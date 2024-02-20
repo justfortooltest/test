@@ -1,0 +1,19 @@
+Sub FilterSheets()
+    Dim ws As Worksheet
+    Dim searchText As String
+
+    ' 输入要搜索的字符或字符串
+    searchText = InputBox("请输入要搜索的字符或字符串：")
+
+    ' 循环遍历所有工作表
+    For Each ws In ThisWorkbook.Sheets
+        ' 检查工作表的名字是否包含搜索的字符或字符串
+        If InStr(1, ws.Name, searchText, vbTextCompare) > 0 Then
+            ' 如果包含，则显示该工作表
+            ws.Visible = True
+        Else
+            ' 如果不包含，则隐藏该工作表
+            ws.Visible = xlSheetHidden
+        End If
+    Next ws
+End Sub
